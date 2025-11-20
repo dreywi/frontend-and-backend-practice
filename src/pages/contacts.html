@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контакты</title>
+    <link rel="stylesheet" href="../../styles/style_contacts.css">
+</head>
+<body>
+<div class="page-container">
+    <header class="header">
+        <h1>Наши контакты</h1>
+    </header>
+    <nav class="nav">
+        <ul class="nav-list">
+            <li class="nav-item"><a class="nav-link" href="../index.html">Главная</a></li>
+            <li class="nav-item"><a class="nav-link" href="news.html">Новости</a></li>
+            <li class="nav-item"><a class="nav-link" href="goods.html">Товары</a></li>
+            <li class="nav-item"><a class="nav-link" href="contacts.html">Контакты</a></li>
+        </ul>
+    </nav>
+    <main class="main">
+        <div class="content">
+            <h1 class="title">Контакты</h1>
+            <div class="email">
+                Адрес электронной почты: nizharadzedt@mail.ru
+            </div>
+            <div class="address">
+                Адрес: г. Вологда, ул. Ленинградская, д.105
+            </div>
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <h3>Телефон</h3>
+                    <p>+7 (921) 128-45-44</p>
+                </div>
+                <div class="contact-item">
+                    <h3>Время работы</h3>
+                    <p>Пн-Ср:12:00-15:00</p>
+                </div>
+                <div class="contact-item">
+                    <h3>Социальные сети</h3>
+                    <p><span style="color: blue">VK</span> <span style="color: steelblue">Telegram</span> <span style="color: forestgreen">WhatsApp</span></p>
+                </div>
+            </div>
+            <button class="contact-button" onclick="contactModal.showModal()">Позвонить мне</button>
+        </div>
+    </main>
+    <div class="footer">
+        © 2024 Все права защищены. Контактная информация
+    </div>
+    <!-- Модальное окно для формы обратной связи -->
+    <dialog id="contactModal">
+        <div class="modal-header">
+            <h2>Форма обратной связи</h2>
+        </div>
+        <div class="modal-content">
+            <form id="feedbackForm" method="dialog">
+                <div class="form-group">
+                    <label for="name">Имя <span class="required">*</span></label>
+                    <input type="text" id="name" name="name" required placeholder="Введите ваше имя">
+                </div>
+                <div class="form-group">
+                    <label for="phone">Телефон <span class="required">*</span></label>
+                    <input type="tel" id="phone" name="phone" required placeholder="+7 (XXX) XXX-XX-XX" pattern="[\+]?[78]\s?[\(]?\d{3}[\)]?\s?\d{3}[\-]?\d{2}[\-]?\d{2}">
+                </div>
+                <div class="form-group">
+                    <label for="email">Электронная почта <span class="required">*</span></label>
+                    <input type="email" id="email" name="email" required placeholder="example@mail.ru">
+                </div>
+                <div class="form-group">
+                    <label for="category">Категория обращения <span class="required">*</span></label>
+                    <select id="category" name="category" required>
+                        <option value="">Выберите категорию</option>
+                        <option value="technical">Техническая поддержка</option>
+                        <option value="commercial">Коммерческое предложение</option>
+                        <option value="cooperation">Сотрудничество</option>
+                        <option value="complaint">Жалоба</option>
+                        <option value="suggestion">Предложение</option>
+                        <option value="other">Другое</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="message">Текст обращения <span
+                            class="required">*</span></label>
+                    <textarea id="message" name="message" required placeholder="Опишите вашу проблему или вопрос..."></textarea>
+                </div>
+                <div class="modal-actions">
+                    <!-- Кнопка отмены с автоматическим закрытием через form method="dialog" -->
+                    <button type="submit" class="btn btnsecondary" onclick="contactModal.close()">
+                        Отмена
+                    </button>
+                    <!-- Кнопка отправки с обработкой через JavaScript -->
+                    <button type="button" class="btn btn-primary"
+                            onclick="submitForm()">Отправить
+                    </button>
+                </div>
+            </form>
+        </div>
+    </dialog>
+    <script>
+        // Функция для отправки формы
+        function submitForm() {
+            const form = document.getElementById('feedbackForm');
+            const formData = new FormData(form);
+            // Простая валидация
+            if (!form.checkValidity()) {
+                form.reportValidity();
+                return;
+            }
+            // Собираем данные формы
+            const data = {
+                name: formData.get('name'),
+                phone: formData.get('phone'),
+                email: formData.get('email'),
+                category: formData.get('category'),
+                message: formData.get('message')
+            };
+            // В реальном приложении здесь был бы AJAX-запрос
+            console.log('Данные формы:', data);
+            // Показываем уведомление об успешной отправке
+            alert('Спасибо! Ваше обращение отправлено. Мы свяжемся с вами в ближайшее время.');
+            // Закрываем модальное окно
+            contactModal.close();
+            // Очищаем форму
+            form.reset();
+        }
+
+        // Закрытие модального окна по клику на фон
+        document.getElementById('contactModal').addEventListener('click',
+            function (event) {
+                if (event.target === this) {
+                    this.close();
+                }
+            });
+
+        // Обработка отправки формы через Enter (предотвращаем стандартное поведение)
+        document.getElementById('feedbackForm').addEventListener('keypress',
+            function (event) {
+                if (event.key === 'Enter' && event.target.type !== 'textarea') {
+                    event.preventDefault();
+                }
+            });
+    </script>
+</div>
+</body>
+</html>
