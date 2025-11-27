@@ -129,7 +129,8 @@ main.content {
     line-height: 1.8;
 }
 
-
+/* ===== НАВЫКИ ===== */
+/* ИЗМЕНЕНИЕ: Добавили CSS Grid для навыков */
 .skills-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -154,7 +155,7 @@ main.content {
     box-shadow: 0 6px 20px rgba(79, 172, 254, 0.4);
 }
 
-
+/* ===== ОПЫТ РАБОТЫ ===== */
 .experience-section {
     margin-top: 50px;
 }
@@ -167,7 +168,7 @@ main.content {
     font-weight: 300;
 }
 
-
+/* ИЗМЕНЕНИЕ: Добавили CSS Grid для карточек опыта */
 .experience-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -200,7 +201,7 @@ main.content {
     margin: 0;
 }
 
-
+/* ===== НОВОСТИ ===== */
 .news-container {
     display: grid;
     gap: 25px;
@@ -233,9 +234,9 @@ main.content {
     margin: 0;
 }
 
-
+/* ===== ТОВАРЫ ===== */
 .products-grid {
-    display: inline-flex;
+    display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 30px;
     margin-top: 30px;
@@ -277,7 +278,7 @@ main.content {
     margin: 5px 0;
 }
 
-
+/* ===== КОНТАКТЫ ===== */
 .contacts-container {
     text-align: center;
 }
@@ -309,18 +310,19 @@ main.content {
     box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
 }
 
-
+/* ===== ФУТЕР ===== */
 .footer {
     background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
     color: white;
     text-align: center;
     padding: 30px;
     margin-top: 50px;
-
+    /* Новое: Привязка к области сетки */
     grid-area: footer;
 }
 
-
+/* ===== АДАПТИВНОСТЬ ===== */
+/* Новое: Медиа-запросы для мобильных устройств */
 @media (max-width: 768px) {
     .nav-list {
         flex-direction: column;
@@ -340,6 +342,9 @@ main.content {
     }
 }
 
+/* ===== ДОПОЛНИТЕЛЬНЫЕ СТИЛИ ДЛЯ ОБНОВЛЕННЫХ СТРАНИЦ ===== */
+
+/* Стили для страницы контактов */
 .contact-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -366,7 +371,7 @@ main.content {
     margin: 0;
 }
 
-
+/* Улучшенные стили для новостей */
 .news-header {
     margin-bottom: 15px;
     border-bottom: 2px solid #f8f9fa;
@@ -391,6 +396,7 @@ main.content {
     text-decoration: underline;
 }
 
+/* Улучшенные стили для товаров */
 .products-section {
     max-width: 1200px;
     margin: 0 auto;
@@ -437,7 +443,7 @@ main.content {
     box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
 }
 
-
+/* Адаптивность для новых элементов */
 @media (max-width: 768px) {
     .contact-grid {
         grid-template-columns: 1fr;
