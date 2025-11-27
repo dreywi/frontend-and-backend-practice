@@ -59,11 +59,12 @@
                 <p>Футер</p>
             </footer>
             
-            <div class="modal-header">
+           <dialog id="contactModal">
+                <div class="modal-header">
                     <h2>Форма обратной связи</h2>
-            </div>
+                </div>
                 
-            <div class="modal-content">
+                <div class="modal-content">
                     <form id="feedbackForm" method="dialog">
                         <div class="form-group">
                             <label for="name">Имя <span class="required">*</span></label>
@@ -105,7 +106,8 @@
                             <button type="button" class="btn btn-primary" onclick="submitForm()">Отправить</button>
                         </div>
                     </form>
-            </div>
+                </div>
+            </dialog>
             // Функция для отправки формы
                 function submitForm() {
                     const form = document.getElementById('feedbackForm');
